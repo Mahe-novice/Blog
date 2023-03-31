@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="static/css/Blog.css">
+    <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&family=Lato&display=swap" rel="stylesheet">
+    <link rel="website icon" href="https://imgs.search.brave.com/stfcsHRSrCQwhJpXjG31KFNLuz-ISWPZqlCwPPeiahw/rs:fit:475:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5T/b25DNEc2TWR5TzUw/TkZUSGxJOHVBSGFI/WiZwaWQ9QXBp">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar__brand">
+            <img src="static/Blog.svg" alt="My_blog" class="navbar__logo">Micro Blog
+        </div>
+        <ul class="navbar__navigation">
+            <li class="navbar__navigation-item">
+                <a href="#" class="navbar__link">Recent</a>
+            </li>
+            <li class="navbar__navigation-item">
+                <a href="#" class="navbar__link">Calendar</a>
+            </li>
+        </ul>
+    </header>
+    <main class="main">
+        <section>
+            <h1>Add new entry</h1>
+            <form method="post" class="form">
+                <p class="form__input">
+                <label for="entry" class="form__label">Entry contents</label>
+                <textarea name="content" id="entry" class="form__textarea" ></textarea> 
+                <!-- <--aria-label = "Entry contents" this can be also used near class= "form__textarea"-->
+                </p>
+                <button type="submit" class="form__submit">Add entry</button>
+            </form>
+        </section>
+        <section>
+            <h1>Recent posts</h1>
+            {% for entry in entries %}
+            <article class="entry">
+                <div>
+                    <h2 class="entry__title">{{ entry[0] | truncate(30, true) }}</h2>
+                    <time datetime="{{ entry[1] }}" class="entry__date">{{ entry[2] }}</time>
+                </div>
+                <p class="entry__content">
+                    {{ entry[0 ]}}
+                </p>
+            </article>
+            {% endfor %}
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer__content">
+            <section class="left">
+                <a href="#" class="footer__item">Made by Mahe</a>
+                <a href="#" class="footer__item">Check out my other projects too</a>
+            </section>
+            <section class="right">
+                <div class="footer__column">
+                    <a class="footer__item" href="#">Recent</a>
+                    <a class="footer__item" href="#">Calendar</a>
+                </div>
+                <div class="footer__column">
+                    <a class="footer__item" href="#">About</a>
+                    <a class="footer__item" href="#">How this was made</a>
+                </div>
+            </section>
+        </div>
+    </footer>
+</body>
+</html>
